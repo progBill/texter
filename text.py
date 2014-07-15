@@ -21,12 +21,11 @@ class Text:
         if num_chunk:
             #TODO: I think below will leave some words off 
             n=self.len(self.words)/num_chunk
-            for i in xrange(0, len(num_chunks), n):
-                self.chunks.append(self.words[i:i+n])
         elif len_chunk:
             n=self.len_chunk/len(self.words)
-            for i in xrange(0, len(self.words), len_chunk):
-                self.chunks=[x for x in self.words[i:i+n]]
+
+        for i in xrange(0, len(self.words), len_chunk):
+            self.chunks=[x for x in self.words[i:i+n]]
 
 
         # dict of token:num_appearing

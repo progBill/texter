@@ -20,13 +20,13 @@ class Text:
         # ordered list of words
         if num_chunk:
             #TODO: I think below will leave some words off 
-            n=self.num_chunk/len(self.num_words)
+            n=self.len(self.words)/num_chunk
             for i in xrange(0, len(num_chunks), n):
                 self.chunks.append(self.words[i:i+n])
         elif len_chunk:
             n=self.len_chunk/len(self.words)
             for i in xrange(0, len(self.words), len_chunk):
-                self.chunks=[x for x in self.unbroken_text[i:i+n]]
+                self.chunks=[x for x in self.words[i:i+n]]
 
 
         # dict of token:num_appearing

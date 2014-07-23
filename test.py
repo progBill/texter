@@ -20,7 +20,7 @@ def main(argv):
 
     txt = text.Text(fulltxt, num_chunk=10)
 
-    print len(txt.words)
+    print str(txt)
 
 if __name__ == '__main__':
     main(sys.argv[1:])

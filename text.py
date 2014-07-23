@@ -8,6 +8,10 @@ class Word:
     def set_quality(self, key, val):
         self.qual[key]=val
 
+    def __str__(self):
+        return self.word
+
+
 class Text:
 
     def __init__(self, unbroken_text, num_chunk=None, len_chunk=None):
@@ -33,4 +37,7 @@ class Text:
             else:
                 self.unigram[x]=1
 
+
+    def __str__(self):
+        return ' '.join([str(x) for x in self.words])
 

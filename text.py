@@ -24,18 +24,20 @@ class Text:
             #TODO: I think below will leave some words off 
             n=len(self.words)/num_chunk
             for i in range(n):
-                self.chunks=[x for x in self.words[i:i+n]]
+                self.chunks.append([x for x in self.words[i:i+n]])
         elif len_chunk:
             n=self.len_chunk/len(self.words)
             for i in range(n):
-                self.chunks=[x for x in self.words[i:i+n]]
+                self.chunks.append([x for x in self.words[i:i+n]])
 
         # dict of token:num_appearing
-        for x in self.chunks:
-            if x in self.unigram.keys():
-                self.unigram[x]+=1
-            else:
-                self.unigram[x]=1
+        for lst in self.chunks:
+            for x in lst:
+                print x
+                if x in self.unigram.keys():
+                    self.unigram[x]+=1
+                else:
+                    self.unigram[x]=1
 
 
     def __str__(self):

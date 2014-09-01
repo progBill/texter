@@ -1,4 +1,4 @@
-
+from matrix import Matrix
 
 class Word:
     def __init__(self, word):
@@ -16,6 +16,10 @@ class Text:
 
     def __init__(self, unbroken_text, num_chunk=None, len_chunk=None):
         self.words = [Word(x) for x in unbroken_text.split()]
+        m= Matrix(self.words)
+        self.matrix= m.get_matrix()
+        self.index = m.get_index()
+
         self.chunks=[]
         self.unigram={}
 
@@ -33,7 +37,6 @@ class Text:
         # dict of token:num_appearing
         for lst in self.chunks:
             for x in lst:
-                print x
                 if x in self.unigram.keys():
                     self.unigram[x]+=1
                 else:
@@ -42,4 +45,6 @@ class Text:
 
     def __str__(self):
         return ' '.join([str(x) for x in self.words])
+
+
 

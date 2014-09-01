@@ -1,7 +1,6 @@
 import text
 import getopt, sys
 
-
 def main(argv):
 
     options = "f:"    
@@ -20,7 +19,16 @@ def main(argv):
 
     txt = text.Text(fulltxt, num_chunk=10)
 
-    print txt.unigrams
+    print 'unigrams: %s' % (len(txt.unigram))
+
+    m = txt.matrix
+    i = txt.index
+
+    for x in m:
+        print x
+
+    for x in i:
+        print i
 
 if __name__ == '__main__':
     main(sys.argv[1:])

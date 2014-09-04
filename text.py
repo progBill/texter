@@ -1,4 +1,6 @@
 from matrix import Matrix
+from string import punctuation
+
 
 class Word:
     def __init__(self, word):
@@ -15,7 +17,8 @@ class Word:
 class Text:
 
     def __init__(self, unbroken_text, num_chunk=None, len_chunk=None):
-        self.words = [Word(x) for x in unbroken_text.split()]
+        nopunc_txt = unbroken_text.translate(None, punctuation)
+        self.words = [Word(x) for x in nopunc_txt.split()]
         m= Matrix(self.words)
         self.matrix= m.get_matrix()
         self.index = m.get_index()

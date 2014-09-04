@@ -1,6 +1,9 @@
 import text
 import getopt, sys
 
+def usage():
+    print 'python test.py -f <path/to/txtfile>'
+
 def main(argv):
 
     options = "f:"    
@@ -19,16 +22,14 @@ def main(argv):
 
     txt = text.Text(fulltxt, num_chunk=10)
 
-    print 'unigrams: %s' % (len(txt.unigram))
+    i = [str(x) for x in txt.index]
+    col_width = len(max(i, key=lambda l: len(l)))
+    i = [x.center(col_width) for x in i]
 
-    m = txt.matrix
-    i = txt.index
+    print '%s' % (' '.join(i))
+    for x in txt.matrix: 
+            print ' '.join(str(x).center(col_width))
 
-    for x in m:
-        print x
-
-    for x in i:
-        print i
 
 if __name__ == '__main__':
     main(sys.argv[1:])

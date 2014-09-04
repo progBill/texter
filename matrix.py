@@ -16,12 +16,14 @@ class Matrix:
         for index1,key in enumerate(self.index): 
             # add a list to the matrix for our new word
             self.matrix.append([0 for x in self.index])
+#            print 'x: %s' % (index1)
             # the second axis
             for index2,token in enumerate(self.index):
                 # now go through the text and see if we have a pattern
                 for position, word in enumerate(incList):
                     # increment the value of the combo
                     if word == key and position+1 < len(incList) and incList[position + 1] == token:
+#                        print 'combo: %s %s' % (key, token)
                         self.matrix[index1][index2] += 1
 
 

@@ -24,11 +24,12 @@ def main(argv):
 
     i = [str(x) for x in txt.index]
     col_width = len(max(i, key=lambda l: len(l)))
-    i = [x.center(col_width) for x in i]
+    i = ['{:^10}'.format(x) for x in i]
 
     print '%s' % (' '.join(i))
     for x in txt.matrix: 
-            print ' '.join(str(x).center(col_width))
+        out = ['{:^10}'.format(y) for y in x]
+        print ''.join(out)
 
 
 if __name__ == '__main__':

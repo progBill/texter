@@ -1,4 +1,4 @@
-from matrix import Matrix
+import matrix 
 from string import punctuation
 
 
@@ -19,12 +19,9 @@ class Text:
     def __init__(self, unbroken_text, num_chunk=None, len_chunk=None):
         nopunc_txt = unbroken_text.translate(None, punctuation)
         self.words = [Word(x) for x in nopunc_txt.split()]
-        m= Matrix(self.words)
-        self.matrix= m.get_matrix()
-        self.index = m.get_index()
-
         self.chunks=[]
         self.unigram={}
+        self.get_matrix()
 
         # ordered list of words
         if num_chunk:
@@ -45,6 +42,11 @@ class Text:
                 else:
                     self.unigram[x]=1
 
+
+    def get_matrix(self):
+        self.m = matrix.Matrix(self.words)
+        self.matrix = self.m.get_matrix()
+        self.index = self.m.get_index()
 
     def __str__(self):
         return ' '.join([str(x) for x in self.words])
